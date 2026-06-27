@@ -1,0 +1,141 @@
+.to {
+  position: relative;
+  min-height: 96svh;
+  padding: var(--space-16) clamp(40px, 8vw, 160px);
+  overflow: hidden;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: clamp(48px, 6vw, 120px);
+  align-items: center;
+  background: var(--bg);
+}
+
+/* photo on the left */
+.to__photo {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #0a0807;
+  border: 1px solid var(--border-soft);
+  box-shadow:
+    0 40px 90px rgba(0, 0, 0, 0.5),
+    0 8px 22px rgba(0, 0, 0, 0.4);
+  will-change: transform, opacity;
+}
+
+.to__photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.05) saturate(0.95) brightness(0.88);
+}
+
+.to__veil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, transparent 50%, rgba(8, 5, 6, 0.6) 100%),
+    radial-gradient(ellipse 70% 50% at 50% 60%, transparent 0%, rgba(8, 5, 6, 0.35) 100%);
+}
+
+.to__watermark {
+  position: absolute;
+  right: 16px;
+  bottom: -20px;
+  font-family: var(--decorative);
+  font-weight: 700;
+  font-size: clamp(180px, 22vw, 320px);
+  line-height: 0.85;
+  color: rgba(200, 150, 90, 0.16);
+  user-select: none;
+  pointer-events: none;
+}
+
+.to__copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  max-width: 500px;
+}
+
+.to__title {
+  font-family: var(--serif-jp);
+  font-weight: 500;
+  font-size: clamp(44px, 5vw, 76px);
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+
+.to__quote {
+  font-family: var(--serif-jp);
+  font-size: clamp(16px, 1.5vw, 20px);
+  line-height: 1.85;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  padding: var(--space-3) 0;
+}
+
+/* handwritten signature — styled with italic serif + slight rotation */
+.to__signature-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border-soft);
+  margin-top: var(--space-2);
+}
+
+.to__signature {
+  font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 34px;
+  letter-spacing: 0.08em;
+  color: var(--text);
+  transform: rotate(-2deg);
+  display: inline-block;
+}
+
+.to__signature-mark {
+  font-family: var(--decorative);
+  font-size: 24px;
+  color: var(--red);
+  padding: 8px 14px;
+  border: 1.5px solid var(--red);
+  border-radius: 2px;
+  letter-spacing: 0;
+  transform: rotate(-4deg);
+}
+
+.to__btn {
+  margin-top: var(--space-3);
+  padding: 16px 28px;
+  font-size: 12px;
+  align-self: flex-start;
+}
+
+.to__close {
+  margin-top: var(--space-4);
+  font-family: var(--serif-jp);
+  font-size: 13px;
+  line-height: 1.95;
+  letter-spacing: 0.1em;
+  color: var(--text-dim);
+}
+
+@media (max-width: 900px) {
+  .to {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    padding: var(--space-12) 24px;
+    min-height: auto;
+  }
+  .to__photo {
+    aspect-ratio: 4 / 3;
+  }
+}

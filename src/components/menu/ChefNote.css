@@ -1,0 +1,51 @@
+.cn {
+  padding: var(--space-20) clamp(40px, 8vw, 160px);
+  background: var(--surface-warm);
+  border-block: 1px solid var(--border-soft);
+}
+
+.cn__inner {
+  max-width: 920px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-6);
+}
+
+.cn__quote {
+  font-family: var(--serif-jp);
+  font-weight: 500;
+  font-size: clamp(28px, 3.4vw, 52px);
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  margin: 0;
+  position: relative;
+  will-change: transform, opacity;
+}
+
+.cn__open,
+.cn__close {
+  color: var(--accent);
+  font-family: var(--decorative);
+  opacity: 0.55;
+  display: inline-block;
+  font-size: 0.85em;
+}
+
+.cn__signature {
+  font-family: var(--serif-jp);
+  font-size: 13px;
+  letter-spacing: 0.32em;
+  color: var(--accent);
+  margin-top: var(--space-4);
+  will-change: transform, opacity;
+}
+
+@media (max-width: 900px) {
+  .cn {
+    padding: var(--space-12) 24px;
+  }
+}

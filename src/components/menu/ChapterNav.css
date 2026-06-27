@@ -1,0 +1,142 @@
+/* desktop: floating vertical chapter nav, sits next to sidebar */
+.chapter-nav {
+  position: fixed;
+  left: calc(var(--sidebar-w) + 32px);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 30;
+  pointer-events: none;
+}
+
+.chapter-nav__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.chapter-nav__list li {
+  pointer-events: auto;
+}
+
+.chapter-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 4px;
+  color: var(--text-dim);
+  transition: color 280ms var(--ease-out);
+}
+
+.chapter-link__num {
+  font-family: var(--decorative);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  width: 16px;
+  text-align: center;
+  color: inherit;
+  transition: color 280ms var(--ease-out);
+}
+
+.chapter-link__line {
+  width: 18px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.5;
+  transition: width 320ms var(--ease-out), opacity 280ms var(--ease-out);
+}
+
+.chapter-link__label {
+  font-family: var(--serif-jp);
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  color: inherit;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 280ms var(--ease-out), transform 280ms var(--ease-out);
+  white-space: nowrap;
+}
+
+.chapter-link:hover {
+  color: var(--text);
+}
+
+.chapter-link:hover .chapter-link__label {
+  opacity: 0.7;
+  transform: translateX(0);
+}
+
+.chapter-link.is-active {
+  color: var(--accent);
+}
+
+.chapter-link.is-active .chapter-link__line {
+  width: 36px;
+  opacity: 1;
+}
+
+.chapter-link.is-active .chapter-link__label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* mobile: horizontal progress bar */
+.chapter-progress {
+  display: none;
+  position: fixed;
+  top: var(--topbar-h);
+  left: 0;
+  right: 0;
+  z-index: 30;
+  background: rgba(13, 13, 13, 0.85);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-soft);
+  padding: 10px 0 8px;
+}
+
+.chapter-progress__bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 600ms var(--ease-out);
+}
+
+.chapter-progress__labels {
+  display: flex;
+  justify-content: space-around;
+  gap: 4px;
+  padding: 0 16px;
+}
+
+.chapter-progress__label {
+  font-family: var(--serif-jp);
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  color: var(--text-dim);
+  padding: 4px 6px;
+  transition: color 280ms var(--ease-out);
+}
+
+.chapter-progress__label.is-active {
+  color: var(--accent);
+}
+
+@media (max-width: 1100px) {
+  .chapter-nav {
+    left: calc(var(--sidebar-w) + 18px);
+  }
+}
+
+@media (max-width: 900px) {
+  .chapter-nav {
+    display: none;
+  }
+  .chapter-progress {
+    display: block;
+  }
+}
