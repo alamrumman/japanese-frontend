@@ -28,10 +28,10 @@
   --sidebar-w: 210px;
   --topbar-h: 64px;
 
-  --serif-jp: 'Noto Serif JP', 'Shippori Mincho', serif;
-  --sans-jp: 'Noto Sans JP', sans-serif;
-  --decorative: 'Shippori Mincho', 'Noto Serif JP', serif;
-  --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --serif-jp: 'Yu Mincho', 'Hiragino Mincho ProN', 'Noto Serif JP', 'Shippori Mincho', serif;
+  --sans-jp: 'Yu Gothic', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+  --decorative: 'Yu Mincho', 'Hiragino Mincho ProN', 'Shippori Mincho', 'Noto Serif JP', serif;
+  --sans: system-ui, -apple-system, 'Segoe UI', 'Inter', sans-serif;
 
   --radius-sm: 2px;
   --radius: 4px;
@@ -123,6 +123,11 @@ h4 {
 .layout {
   display: block;
   padding-left: var(--sidebar-w);
+}
+
+.route-fallback {
+  min-height: 100svh;
+  background: var(--bg);
 }
 
 @media (max-width: 900px) {

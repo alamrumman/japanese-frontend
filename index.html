@@ -10,9 +10,26 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;700&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="image"
+      href="/sushi-1024.avif"
+      type="image/avif"
+      imagesrcset="/sushi-768.avif 768w, /sushi-1024.avif 1024w, /sushi-1280.avif 1280w, /sushi-1536.avif 1536w"
+      imagesizes="(max-width: 900px) 100vw, 75vw"
+      fetchpriority="high"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Noto+Serif+JP:wght@500;700&family=Shippori+Mincho:wght@700&display=swap"
+      rel="preload"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Noto+Serif+JP:wght@500;700&family=Shippori+Mincho:wght@700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
   </head>
   <body>
     <div id="root"></div>

@@ -28,7 +28,26 @@ export default function StoryPreview() {
 
           <figure className="story__figure" data-reveal>
             <div className="story__image">
-              <img src="/chef.png" alt="森 春人" loading="lazy" />
+              <picture>
+                <source
+                  type="image/avif"
+                  srcSet="/chef-320.avif 320w, /chef-480.avif 480w, /chef-640.avif 640w, /chef-800.avif 800w"
+                  sizes="(max-width: 900px) calc(100vw - 64px), 42vw"
+                />
+                <source
+                  type="image/webp"
+                  srcSet="/chef-320.webp 320w, /chef-480.webp 480w, /chef-640.webp 640w, /chef-800.webp 800w"
+                  sizes="(max-width: 900px) calc(100vw - 64px), 42vw"
+                />
+                <img
+                  src="/chef.png"
+                  alt="森 春人"
+                  width="448"
+                  height="736"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
 
             <figcaption className="story__caption">

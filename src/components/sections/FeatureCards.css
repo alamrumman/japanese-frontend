@@ -42,11 +42,19 @@
   border-color: rgba(200, 150, 90, 0.32);
 }
 
+.feature__image picture,
 .feature__image img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+}
+
+.feature__image picture {
+  display: block;
+}
+
+.feature__image img {
   object-fit: cover;
   filter: contrast(1.05) saturate(0.92) brightness(0.85);
   transition: transform 700ms var(--ease-out), filter 320ms var(--ease-out);

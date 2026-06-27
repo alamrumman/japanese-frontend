@@ -29,6 +29,55 @@ const teasers = [
   },
 ];
 
+const optimizedImages = {
+  '/menu%20item1.png': {
+    base: '/menu-item1',
+    width: 280,
+    height: 291,
+  },
+  '/menu%20item2.png': {
+    base: '/menu-item2',
+    width: 273,
+    height: 287,
+  },
+  '/menu%20item4.png': {
+    base: '/menu-item4',
+    width: 285,
+    height: 291,
+  },
+};
+
+function TeaserImage({ teaser }) {
+  const image = optimizedImages[teaser.image];
+
+  if (!image) {
+    return <img src={teaser.image} alt={teaser.label} loading="lazy" decoding="async" />;
+  }
+
+  return (
+    <picture>
+      <source
+        type="image/avif"
+        srcSet={`${image.base}-320.avif 320w, ${image.base}-480.avif 480w, ${image.base}-640.avif 640w`}
+        sizes="(max-width: 900px) min(480px, calc(100vw - 48px)), 31vw"
+      />
+      <source
+        type="image/webp"
+        srcSet={`${image.base}-320.webp 320w, ${image.base}-480.webp 480w, ${image.base}-640.webp 640w`}
+        sizes="(max-width: 900px) min(480px, calc(100vw - 48px)), 31vw"
+      />
+      <img
+        src={teaser.image}
+        alt={teaser.label}
+        width={image.width}
+        height={image.height}
+        loading="lazy"
+        decoding="async"
+      />
+    </picture>
+  );
+}
+
 export default function MenuPreview() {
   const root = useScrollReveal({ stagger: 0.12 });
 
@@ -52,7 +101,7 @@ export default function MenuPreview() {
               <span className="mp__card-stamp kanji">{t.number}</span>
 
               <div className="mp__card-photo">
-                <img src={t.image} alt={t.label} loading="lazy" />
+                <TeaserImage teaser={t} />
                 <div className="mp__card-veil" />
               </div>
 

@@ -1,11 +1,5 @@
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
 import { site, tickerItems } from "./config/site.config";
 import "./Hero.css";
-
-const prefersReducedMotion = () =>
-  typeof window !== "undefined" &&
-  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const TITLE_LINES = [
   { text: "味わう、", accent: false },
@@ -14,140 +8,32 @@ const TITLE_LINES = [
 ];
 
 export default function Hero() {
-  const root = useRef(null);
-
-  useEffect(() => {
-    if (prefersReducedMotion()) return;
-
-    const ctx = gsap.context(() => {
-      gsap.set("[data-hero-fade]", {
-        opacity: 0,
-        y: 24,
-      });
-
-      gsap.set("[data-hero-mask] > span", {
-        yPercent: 110,
-      });
-
-      gsap.set("[data-hero-photo]", {
-        opacity: 0,
-        scale: 1.04,
-      });
-
-      gsap.set("[data-hero-ticker]", {
-        opacity: 0,
-      });
-
-      gsap.set("[data-hero-cta]", {
-        opacity: 0,
-        y: 18,
-      });
-
-      const tl = gsap.timeline({
-        delay: 0.2,
-      });
-
-      tl.to(
-        "[data-hero-photo]",
-        {
-          opacity: 1,
-          scale: 1,
-          duration: 1.8,
-          ease: "expo.out",
-        },
-        0.15,
-      )
-
-        .to(
-          "[data-hero-eyebrow]",
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.7,
-            ease: "power3.out",
-          },
-          0.45,
-        )
-
-        .to(
-          "[data-hero-mask] > span",
-          {
-            yPercent: 0,
-            duration: 1,
-            stagger: 0.12,
-            ease: "expo.out",
-          },
-          0.65,
-        )
-
-        .to(
-          "[data-hero-copy]",
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: "power3.out",
-          },
-          1.3,
-        )
-
-        .to(
-          "[data-hero-cta]",
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            ease: "power3.out",
-          },
-          1.55,
-        )
-
-        .to(
-          "[data-hero-scroll]",
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-          },
-          1.7,
-        )
-
-        .to(
-          "[data-hero-ticker]",
-          {
-            opacity: 1,
-            duration: 0.7,
-          },
-          1.9,
-        );
-
-      gsap.to("[data-hero-photo] img", {
-        scale: 1.04,
-        duration: 22,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-        delay: 2,
-      });
-
-      gsap.to("[data-hero-scroll-dot]", {
-        y: 14,
-        repeat: -1,
-        yoyo: true,
-        duration: 1.6,
-        ease: "sine.inOut",
-      });
-    }, root);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section id="top" className="hero" ref={root}>
+    <section id="top" className="hero">
       {/* ---------- Hero Image ---------- */}
 
-      <div className="hero__photo"  data-hero-photo>
-        <img src="/sushi.png" alt="Japanese Sushi" loading="eager" />
+      <div className="hero__photo" data-hero-photo>
+        <picture>
+          <source
+            type="image/avif"
+            srcSet="/sushi-768.avif 768w, /sushi-1024.avif 1024w, /sushi-1280.avif 1280w, /sushi-1536.avif 1536w"
+            sizes="(max-width: 900px) 100vw, 75vw"
+          />
+          <source
+            type="image/webp"
+            srcSet="/sushi-768.webp 768w, /sushi-1024.webp 1024w, /sushi-1280.webp 1280w, /sushi-1536.webp 1536w"
+            sizes="(max-width: 900px) 100vw, 75vw"
+          />
+          <img
+            src="/sushi.png"
+            alt="Japanese Sushi"
+            width="1536"
+            height="1024"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+          />
+        </picture>
 
         <div className="hero__photo-veil" aria-hidden="true" />
       </div>

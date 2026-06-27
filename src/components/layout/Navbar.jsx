@@ -4,7 +4,7 @@ import { nav, site } from '../sections/config/site.config';
 import './Navbar.css';
 
 export default function Navbar() {
-  const { pathname, hash } = useLocation();
+  const { pathname } = useLocation();
   const [scrollActive, setScrollActive] = useState('/');
   const [open, setOpen] = useState(false);
 
