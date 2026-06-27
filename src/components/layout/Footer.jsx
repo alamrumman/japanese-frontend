@@ -85,6 +85,12 @@ export default function Footer() {
                 </a>
               </li>
             ))}
+            <li>
+              <Link to="/privacy" className="footer__link">プライバシーポリシー</Link>
+            </li>
+            <li>
+              <Link to="/terms" className="footer__link">利用規約</Link>
+            </li>
           </ul>
         </div>
       </div>

@@ -5,6 +5,8 @@ import Footer from './components/layout/Footer';
 import HomePage from './pages/HomePage';
 import ContactPage from './pages/ContactPage';
 import MenuPage from './pages/MenuPage';
+import PrivacyPage from './pages/PrivacyPage';
+import TermsPage from './pages/TermsPage';
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -32,6 +34,8 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/menu" element={<MenuPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/terms" element={<TermsPage />} />
         </Routes>
       </main>
       <Footer />
